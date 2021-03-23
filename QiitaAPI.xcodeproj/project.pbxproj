@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		AB23F0032609C1A2000AE6CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB23F0022609C1A2000AE6CB /* AppDelegate.swift */; };
 		AB23F0052609C1A2000AE6CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB23F0042609C1A2000AE6CB /* SceneDelegate.swift */; };
-		AB23F0072609C1A2000AE6CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB23F0062609C1A2000AE6CB /* ViewController.swift */; };
+		AB23F0072609C1A2000AE6CB /* QiitaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB23F0062609C1A2000AE6CB /* QiitaViewController.swift */; };
 		AB23F00A2609C1A2000AE6CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB23F0082609C1A2000AE6CB /* Main.storyboard */; };
 		AB23F00C2609C1A6000AE6CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB23F00B2609C1A6000AE6CB /* Assets.xcassets */; };
 		AB23F00F2609C1A6000AE6CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB23F00D2609C1A6000AE6CB /* LaunchScreen.storyboard */; };
+		AB23F01C2609C332000AE6CB /* Qiita.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB23F01B2609C332000AE6CB /* Qiita.swift */; };
+		AB23F0332609CBA5000AE6CB /* QiitaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB23F0312609CBA5000AE6CB /* QiitaTableViewCell.swift */; };
+		AB23F0342609CBA5000AE6CB /* QiitaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB23F0322609CBA5000AE6CB /* QiitaTableViewCell.xib */; };
+		AB23F03B2609CC9A000AE6CB /* QiitaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB23F03A2609CC9A000AE6CB /* QiitaAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AB23EFFF2609C1A2000AE6CB /* QiitaAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB23F0022609C1A2000AE6CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB23F0042609C1A2000AE6CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AB23F0062609C1A2000AE6CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB23F0062609C1A2000AE6CB /* QiitaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaViewController.swift; sourceTree = "<group>"; };
 		AB23F0092609C1A2000AE6CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB23F00B2609C1A6000AE6CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB23F00E2609C1A6000AE6CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB23F0102609C1A6000AE6CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB23F01B2609C332000AE6CB /* Qiita.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Qiita.swift; sourceTree = "<group>"; };
+		AB23F0312609CBA5000AE6CB /* QiitaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaTableViewCell.swift; sourceTree = "<group>"; };
+		AB23F0322609CBA5000AE6CB /* QiitaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QiitaTableViewCell.xib; sourceTree = "<group>"; };
+		AB23F03A2609CC9A000AE6CB /* QiitaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,51 @@
 		AB23F0012609C1A2000AE6CB /* QiitaAPI */ = {
 			isa = PBXGroup;
 			children = (
+				AB23F0392609CC89000AE6CB /* API */,
+				AB23F0192609C248000AE6CB /* Model */,
+				AB23F0182609C245000AE6CB /* View */,
+				AB23F0172609C23E000AE6CB /* Controller */,
 				AB23F0022609C1A2000AE6CB /* AppDelegate.swift */,
 				AB23F0042609C1A2000AE6CB /* SceneDelegate.swift */,
-				AB23F0062609C1A2000AE6CB /* ViewController.swift */,
 				AB23F0082609C1A2000AE6CB /* Main.storyboard */,
 				AB23F00B2609C1A6000AE6CB /* Assets.xcassets */,
 				AB23F00D2609C1A6000AE6CB /* LaunchScreen.storyboard */,
 				AB23F0102609C1A6000AE6CB /* Info.plist */,
 			);
 			path = QiitaAPI;
+			sourceTree = "<group>";
+		};
+		AB23F0172609C23E000AE6CB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AB23F0062609C1A2000AE6CB /* QiitaViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AB23F0182609C245000AE6CB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB23F0312609CBA5000AE6CB /* QiitaTableViewCell.swift */,
+				AB23F0322609CBA5000AE6CB /* QiitaTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB23F0192609C248000AE6CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB23F01B2609C332000AE6CB /* Qiita.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB23F0392609CC89000AE6CB /* API */ = {
+			isa = PBXGroup;
+			children = (
+				AB23F03A2609CC9A000AE6CB /* QiitaAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +170,7 @@
 			files = (
 				AB23F00F2609C1A6000AE6CB /* LaunchScreen.storyboard in Resources */,
 				AB23F00C2609C1A6000AE6CB /* Assets.xcassets in Resources */,
+				AB23F0342609CBA5000AE6CB /* QiitaTableViewCell.xib in Resources */,
 				AB23F00A2609C1A2000AE6CB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +182,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB23F0072609C1A2000AE6CB /* ViewController.swift in Sources */,
+				AB23F0072609C1A2000AE6CB /* QiitaViewController.swift in Sources */,
+				AB23F0332609CBA5000AE6CB /* QiitaTableViewCell.swift in Sources */,
 				AB23F0032609C1A2000AE6CB /* AppDelegate.swift in Sources */,
+				AB23F03B2609CC9A000AE6CB /* QiitaAPI.swift in Sources */,
+				AB23F01C2609C332000AE6CB /* Qiita.swift in Sources */,
 				AB23F0052609C1A2000AE6CB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
