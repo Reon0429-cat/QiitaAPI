@@ -12,44 +12,42 @@ class QiitaViewController: UIViewController {
     private var qiitas = [Qiita]()
     private let cellId = String(describing: QiitaTableViewCell.self)
    
+    @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
+    private var pageCount = 0
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         tableView.delegate = self
         tableView.dataSource = self
         let nibName = String(describing: QiitaTableViewCell.self)
         let nib = UINib(nibName: nibName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
-                
-        fetchQiitaAPI()
         
     }
     
+    @IBAction func decisionButtonDidTapped(_ sender: Any) {
+        fetchQiitaAPI()
+    }
+    
+    @IBAction func pageCountStepperDidTapped(_ sender: UIStepper) {
+        pageCount = Int(sender.value)
+        countLabel.text = String(pageCount)
+    }
+    
     private func fetchQiitaAPI() {
-        guard let url = URL(string: "https://qiita.com/api/v2/items?page=1&per_page=5") else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                fatalError("\(error)")
-            }
-            if let data = data {
-                do {
-                    let qiita = try JSONDecoder().decode([Qiita].self, from: data)
-                    self.qiitas = qiita
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } catch {
-                    fatalError("\(error)")
+        QiitaAPI.shared.fetchQiitaAPI(page: pageCount) { (result) in
+            switch result {
+            case .success(let qiitas):
+                self.qiitas = qiitas
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
-                
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
-        task.resume()
     }
     
 }
