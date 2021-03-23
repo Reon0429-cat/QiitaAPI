@@ -45,7 +45,7 @@ class QiitaViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
             }
         }
     }
