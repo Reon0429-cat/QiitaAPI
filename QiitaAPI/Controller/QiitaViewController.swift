@@ -12,23 +12,32 @@ class QiitaViewController: UIViewController {
     private var qiitas = [Qiita]()
     private let cellId = String(describing: QiitaTableViewCell.self)
    
+    @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
+    private var pageCount = 0
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         tableView.delegate = self
         tableView.dataSource = self
         let nibName = String(describing: QiitaTableViewCell.self)
         let nib = UINib(nibName: nibName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
-   
+
+    }
+    
+    @IBAction func decisionButtonDidTapped(_ sender: Any) {
         fetchQiitaAPI()
     }
     
+    @IBAction func pageCountStepperDidTapped(_ sender: UIStepper) {
+        pageCount = Int(sender.value)
+        countLabel.text = String(pageCount)
+    }
+    
     private func fetchQiitaAPI() {
-        QiitaAPI.shared.fetchQiitaAPI { result in
+        QiitaAPI.shared.fetchQiitaAPI(page: pageCount) { result in
             switch result {
             case .success(let qiitas):
                 self.qiitas = qiitas

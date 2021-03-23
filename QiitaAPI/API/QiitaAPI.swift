@@ -10,11 +10,12 @@ import Foundation
 typealias ResultHandler<T> = (Result<T, Error>) -> Void
 
 class QiitaAPI {
+
     static let shared = QiitaAPI()
     private init() { }
-    
-    func fetchQiitaAPI(handler: @escaping ResultHandler<[Qiita]>) {
-        guard let url = URL(string: "https://qiita.com/api/v2/items?page=1&per_page=20") else { return }
+        
+    func fetchQiitaAPI(page: Int, handler: @escaping ResultHandler<[Qiita]>) {
+        guard let url = URL(string: "https://qiita.com/api/v2/items?page=1&per_page=\(page)") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -32,5 +33,5 @@ class QiitaAPI {
         }
         task.resume()
     }
-
+    
 }
