@@ -23,33 +23,22 @@ class QiitaViewController: UIViewController {
         let nibName = String(describing: QiitaTableViewCell.self)
         let nib = UINib(nibName: nibName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
-                
+   
         fetchQiitaAPI()
-        
     }
     
     private func fetchQiitaAPI() {
-        guard let url = URL(string: "https://qiita.com/api/v2/items?page=1&per_page=5") else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                fatalError("\(error)")
-            }
-            if let data = data {
-                do {
-                    let qiita = try JSONDecoder().decode([Qiita].self, from: data)
-                    self.qiitas = qiita
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } catch {
-                    fatalError("\(error)")
+        QiitaAPI.shared.fetchQiitaAPI { result in
+            switch result {
+            case .success(let qiitas):
+                self.qiitas = qiitas
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
-                
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
-        task.resume()
     }
     
 }
