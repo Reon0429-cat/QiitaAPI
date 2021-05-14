@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,7 @@
 		AB23F01C2609C332000AE6CB /* Qiita.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB23F01B2609C332000AE6CB /* Qiita.swift */; };
 		AB23F0332609CBA5000AE6CB /* QiitaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB23F0312609CBA5000AE6CB /* QiitaTableViewCell.swift */; };
 		AB23F0342609CBA5000AE6CB /* QiitaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB23F0322609CBA5000AE6CB /* QiitaTableViewCell.xib */; };
-		AB23F03B2609CC9A000AE6CB /* QiitaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB23F03A2609CC9A000AE6CB /* QiitaAPI.swift */; };
+		AB23F03B2609CC9A000AE6CB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB23F03A2609CC9A000AE6CB /* APIClient.swift */; };
 		AB23F0402609E5CF000AE6CB /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB23F03F2609E5CF000AE6CB /* Enum.swift */; };
 		AC573E12BC342118556DFF9C /* Pods_QiitaAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568D6BAB3CBF4F71BC584EEE /* Pods_QiitaAPI.framework */; };
 /* End PBXBuildFile section */
@@ -34,7 +34,7 @@
 		AB23F01B2609C332000AE6CB /* Qiita.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Qiita.swift; sourceTree = "<group>"; };
 		AB23F0312609CBA5000AE6CB /* QiitaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaTableViewCell.swift; sourceTree = "<group>"; };
 		AB23F0322609CBA5000AE6CB /* QiitaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QiitaTableViewCell.xib; sourceTree = "<group>"; };
-		AB23F03A2609CC9A000AE6CB /* QiitaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaAPI.swift; sourceTree = "<group>"; };
+		AB23F03A2609CC9A000AE6CB /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		AB23F03F2609E5CF000AE6CB /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		D35281627232A5DB55CB7A9E /* Pods-QiitaAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiitaAPI.release.xcconfig"; path = "Target Support Files/Pods-QiitaAPI/Pods-QiitaAPI.release.xcconfig"; sourceTree = "<group>"; };
 		F51F4422D71414CD47529376 /* Pods-QiitaAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiitaAPI.debug.xcconfig"; path = "Target Support Files/Pods-QiitaAPI/Pods-QiitaAPI.debug.xcconfig"; sourceTree = "<group>"; };
@@ -58,7 +58,6 @@
 				F51F4422D71414CD47529376 /* Pods-QiitaAPI.debug.xcconfig */,
 				D35281627232A5DB55CB7A9E /* Pods-QiitaAPI.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -134,7 +133,7 @@
 		AB23F0392609CC89000AE6CB /* API */ = {
 			isa = PBXGroup;
 			children = (
-				AB23F03A2609CC9A000AE6CB /* QiitaAPI.swift */,
+				AB23F03A2609CC9A000AE6CB /* APIClient.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -265,7 +264,7 @@
 				AB23F0072609C1A2000AE6CB /* QiitaViewController.swift in Sources */,
 				AB23F0332609CBA5000AE6CB /* QiitaTableViewCell.swift in Sources */,
 				AB23F0032609C1A2000AE6CB /* AppDelegate.swift in Sources */,
-				AB23F03B2609CC9A000AE6CB /* QiitaAPI.swift in Sources */,
+				AB23F03B2609CC9A000AE6CB /* APIClient.swift in Sources */,
 				AB23F0402609E5CF000AE6CB /* Enum.swift in Sources */,
 				AB23F01C2609C332000AE6CB /* Qiita.swift in Sources */,
 				AB23F0052609C1A2000AE6CB /* SceneDelegate.swift in Sources */,

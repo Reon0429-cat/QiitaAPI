@@ -9,12 +9,9 @@ import Foundation
 
 typealias ResultHandler<T> = (Result<T, Error>) -> Void
 
-class QiitaAPI {
-
-    static let shared = QiitaAPI()
-    private init() { }
-        
-    func fetchQiitaAPI(page: Int, handler: @escaping ResultHandler<[Qiita]>) {
+struct APIClient {
+    
+    func fetchQiita(page: Int, handler: @escaping ResultHandler<[Qiita]>) {
         guard let url = URL(string: "https://qiita.com/api/v2/items?page=1&per_page=\(page)") else {
             handler(.failure(NetworkError.invalidURL))
             return
@@ -30,7 +27,9 @@ class QiitaAPI {
                 return
             }
             do {
-                let qiitas = try JSONDecoder().decode([Qiita].self, from: data)
+                let jsonDecoder = JSONDecoder()
+                let qiitas = try jsonDecoder.decode([Qiita].self, from: data)
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                 handler(.success(qiitas))
             } catch {
                 handler(.failure(NetworkError.invalidResponse))

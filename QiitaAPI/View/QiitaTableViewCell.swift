@@ -7,34 +7,28 @@
 
 import UIKit
 
-class QiitaTableViewCell: UITableViewCell {
+final class QiitaTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var qiitaLabel: UILabel!
-    @IBOutlet weak var qiitaImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var userImageView: UIImageView!
     
-    var qiita: Qiita? {
-        didSet {
-            qiitaLabel.text = qiita?.title
-            guard let url = URL(string: qiita?.user.profileImageUrl ?? "") else { return }
-            do {
-                let data = try Data(contentsOf: url)
-                let image = UIImage(data: data)
-                qiitaImageView.image = image
-            } catch {
-                fatalError("\(error)")
-            }
+    static var identifier: String { String(describing: self) }
+    static var nib: UINib { UINib(nibName: String(describing: self), bundle: nil) }
+    
+}
+
+extension QiitaTableViewCell {
+    
+    func configure(qiita: Qiita) {
+        titleLabel.text = qiita.title
+        guard let url = URL(string: qiita.user.profileImageUrl) else { return }
+        do {
+            let data = try Data(contentsOf: url)
+            let image = UIImage(data: data)
+            userImageView.image = image
+        } catch {
+            fatalError("\(error)")
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

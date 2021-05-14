@@ -7,13 +7,12 @@
 
 import UIKit
 
-class QiitaViewController: UIViewController {
+final class QiitaViewController: UIViewController {
+   
+    @IBOutlet private weak var countLabel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
     
     private var qiitas = [Qiita]()
-    private let cellId = String(describing: QiitaTableViewCell.self)
-   
-    @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
     private var pageCount = 0
         
     override func viewDidLoad() {
@@ -21,23 +20,22 @@ class QiitaViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        let nibName = String(describing: QiitaTableViewCell.self)
-        let nib = UINib(nibName: nibName, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: cellId)
+        tableView.register(QiitaTableViewCell.nib,
+                           forCellReuseIdentifier: QiitaTableViewCell.identifier)
 
     }
     
-    @IBAction func decisionButtonDidTapped(_ sender: Any) {
+    @IBAction private func decisionButtonDidTapped(_ sender: Any) {
         fetchQiitaAPI()
     }
     
-    @IBAction func pageCountStepperDidTapped(_ sender: UIStepper) {
+    @IBAction private func pageCountStepperDidTapped(_ sender: UIStepper) {
         pageCount = Int(sender.value)
         countLabel.text = String(pageCount)
     }
     
     private func fetchQiitaAPI() {
-        QiitaAPI.shared.fetchQiitaAPI(page: pageCount) { result in
+        APIClient().fetchQiita(page: pageCount) { result in
             switch result {
             case .success(let qiitas):
                 self.qiitas = qiitas
@@ -67,8 +65,9 @@ extension QiitaViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! QiitaTableViewCell
-        cell.qiita = qiitas[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: QiitaTableViewCell.identifier, for: indexPath) as! QiitaTableViewCell
+        let qiita = qiitas[indexPath.row]
+        cell.configure(qiita: qiita)
         return cell
     }
     
